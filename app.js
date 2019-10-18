@@ -1,6 +1,8 @@
 const correctAnswers = ['A','D','C','A','D','C','A','A','D','B'];
 const form = document.querySelector('.quiz-form');
 const result = document.querySelector('.result');
+const span = document.querySelector('span');
+const section = document.querySelector('section');
 
 form.addEventListener('submit', e => {
   e.preventDefault();
@@ -12,6 +14,17 @@ form.addEventListener('submit', e => {
   userAnswers.forEach((answer, index) => {
     if (answer === correctAnswers[index]){
       score += 10;
+      section.setAttribute('class', 'bg-custom')
+      if (score >= 40) {
+          span.classList.remove('text-primary');
+          span.classList.remove('text-danger');
+          span.classList.add('text-success');
+      } 
+       else {
+           span.classList.remove('text-primary');
+           span.classList.remove('text-success');
+           span.classList.add('text-danger');
+      }
     }
   });
 
